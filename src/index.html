@@ -7,8 +7,27 @@
 <!-- Create menu with tabs-->
 <div id="tabs"></div>
 
+<div id="welcome">
+<!--  <img id="welcomeTable" src = "table-table.svg" />-->
+  <div id="welcome-texts">
+    <div id="welcome-title">Welkom aan Jaspers tafel!</div>
+    <div id="welcome-introduction"><p>Op deze website vind je informatie over de nieuwe Dungeons&Dragons campagne 'Ferrefelden'.</p><p>Check informatie over de wereld en de karakters; lees meer over dungeon master Jasper en ontdek wanneer de volgende sessies zijn. Zin om mee te doen? Meld je dan aan!</p></div>
+  </div>
+  <div id="welcome-image-container">
+    <img id="welcomeTable" src = "table-table.svg" />
+    <img id="welcomeSheets" class="welcomeItem" src = "table-sheets.svg" />
+    <img id="welcomeScreen" class="welcomeItem" src = "table-screen.svg" />
+    <img id="welcomeBook" class="welcomeItem" src = "table-book.svg" />
+    <img id="welcomeMap" class="welcomeItem" src = "table-map.svg" />
+    <img id="welcomeCalendar" class="welcomeItem" src = "table-calendar.svg" />
+    <img id="welcomeSign" class="welcomeItem" src = "table-sign.svg" />
+
+    <div id="welcomeTextBubble">Jasper</div>
+  </div>
+</div>
+
 <!-- Create a div where the map will take place -->
-<div id="my_map"></div>
+<div id="worldMap"></div>
 
 <!-- Create a div where the character will take place -->
 <div id="characters"></div>
@@ -18,6 +37,189 @@
 
 <!-- Create a div where the sessions will take place -->
 <div id="sessions"></div>
+
+<!-- Create a div where the sessions will take place -->
+<div id="join"></div>
+
+<script>
+  const windowWidth = window.innerWidth;
+  const paddingLeftImage = Math.floor((windowWidth - 700) / 2) +"px"
+  console.log(paddingLeftImage);
+  const animationDuration = 500;
+
+  const divWelcomeBubble = d3.select("#welcomeTextBubble")
+    .style("position", "absolute")
+    .style("font-family", "Mystery, serif")
+    .style("font-size", "3em")
+    .style("color", "cyan")
+    .style("z-index",12)
+    .style("display", "none");
+
+  const divWelcome = d3.select("#welcome").style("display", "block");
+  const divWelcomeTexts = d3.select("#welcome-texts")
+    .style("min-width", '400px')
+    .style("font-family", "Mystery, serif");
+  const divWelcomeTitle = d3.select("#welcome-title")
+    .style("font-size", "2em")
+    .style("text-align", "center")
+    .style("line-height", "200px")
+    .style("opacity", 0).transition().duration(animationDuration).ease(d3.easeLinear).style("opacity", 1);
+
+  const divWelcomeIntroduction = d3.select("#welcome-introduction")
+    .style("text-align", "center")
+    .style("opacity", 0).transition().delay( animationDuration).duration(animationDuration).ease(d3.easeLinear).style("opacity", 1);
+  const divWelcomeImages = d3.select("#welcome-image-container").style("padding-left", paddingLeftImage).style("width", "1000px")
+    .style("opacity", 0).transition().delay( animationDuration*2).duration(animationDuration).ease(d3.easeLinear).style("opacity", 1);
+
+  d3.select("#welcomeTable")
+    .style("position", "absolute")
+    .style('margin-top', '180px')
+    .style('margin-left', '80px')
+    .on("click", (event) => {
+          console.log("click table")});
+  d3.select("#welcomeSheets")
+    .style("position", "absolute")
+    .style("z-index", 10)
+    .style('margin-top', '380px')
+    .style('margin-left', '140px')
+    .on("click", (event) => {
+      console.log("click");
+      divWelcome.style("display", "none");
+      d3.select("#characters").style("display", "block");
+      d3.select("#tabs").style("display", "flex");
+    })
+    .on("mouseover", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "0.4");
+      d3.select("#welcomeSheets").style("opacity","1");
+      divWelcomeBubble
+        .text('Karakters')
+        .style('margin-top', '330px')
+        .style('margin-left', '140px')
+        .style("display","block");
+    })
+    .on("mouseout", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "1");
+      divWelcomeBubble.style("display","none");
+    });
+  d3.select("#welcomeScreen")
+    .style("position", "absolute")
+    .style("z-index", 10)
+    .style('margin-top', '60px')
+    .style('margin-left', '190px')
+    .on("click", (event) => {
+      console.log("click");
+      divWelcome.style("display", "none");
+      d3.select("#characters").style("display", "block");
+      d3.select("#tabs").style("display", "flex");
+    })
+    .on("mouseover", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "0.4");
+      d3.select("#welcomeScreen").style("opacity","1");
+      divWelcomeBubble
+        .text('De DM')
+        .style('margin-top', '20px')
+        .style('margin-left', '260px')
+        .style("display","block");
+    })
+    .on("mouseout", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "1");
+      divWelcomeBubble.style("display","none");
+    });
+  d3.select("#welcomeBook")
+    .style("position", "absolute")
+    .style("z-index", 10)
+    .style('margin-top', '220px')
+    .style('margin-left', '420px')
+    .on("click", (event) => {
+      divWelcome.style("display", "none");
+      d3.select("#characters").style("display", "block");
+      d3.select("#tabs").style("display", "flex");
+    })
+    .on("mouseover", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "0.4");
+      d3.select("#welcomeBook").style("opacity","1");
+      divWelcomeBubble
+        .text('Geschiedenis')
+        .style('margin-top', '170px')
+        .style('margin-left', '390px')
+        .style("display","block");
+    })
+    .on("mouseout", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "1");
+      divWelcomeBubble.style("display","none");
+    });
+  d3.select("#welcomeMap")
+    .style("position", "absolute")
+    .style("z-index", 10)
+    .style('margin-top', '370px')
+    .style('margin-left', '310px')
+    .on("click", (event) => {
+      divWelcome.style("display", "none");
+      d3.select("#worldMap").style("display", "block");
+      d3.select("#tabs").style("display", "flex");
+    })
+    .on("mouseover", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "0.4");
+      d3.select("#welcomeMap").style("opacity","1");
+      divWelcomeBubble
+        .text('De wereld')
+        .style('margin-top', '310px')
+        .style('margin-left', '290px')
+        .style("display","block");
+    })
+    .on("mouseout", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "1");
+      divWelcomeBubble.style("display","none");
+    });
+  d3.select("#welcomeCalendar")
+    .style("position", "absolute")
+    .style("z-index", 10)
+    .style('margin-top', '250px')
+    .style('margin-left', '150px')
+    .on("click", (event) => {
+      divWelcome.style("display", "none");
+      d3.select("#sessions").style("display", "block");
+      d3.select("#tabs").style("display", "flex");
+    })
+    .on("mouseover", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "0.4");
+      d3.select("#welcomeCalendar").style("opacity","1");
+      divWelcomeBubble
+        .text('De sessies')
+        .style('margin-top', '200px')
+        .style('margin-left', '140px')
+        .style("display","block");
+    })
+    .on("mouseout", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "1");
+      divWelcomeBubble.style("display","none");
+    });
+  d3.select("#welcomeSign")
+    .style("position", "absolute")
+    .style("z-index", 10)
+    .style('margin-top', '410px')
+    .style('margin-left', '460px')
+    .on("click", (event) => {
+      divWelcome.style("display", "none");
+      d3.select("#map").style("display", "block");
+      d3.select("#sessions").style("display", "flex");
+    })
+    .on("mouseover", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "0.4");
+      d3.select("#welcomeSign").style("opacity","1");
+      divWelcomeBubble
+        .text('Aanmelden')
+        .style('margin-top', '350px')
+        .style('margin-left', '430px')
+        .style("display","block");
+    })
+    .on("mouseout", (event) => {
+      d3.selectAll(".welcomeItem").style("opacity", "1");
+      divWelcomeBubble.style("display","none");
+    });
+
+
+</script>
 
 <!--Script for tabs-->
 <script>
@@ -31,15 +233,17 @@
     .style("height", "100%");
 
   const divTabs = d3.select("#tabs")
-    .style("display", "flex")
+    .style("display", "none")
     .style("flex-direction", "row")
     .style("height", "100");
 
   const tabs = [
-    {title: "Kaart", id: "#my_map"},
+    {title: "Welkom", id: "#welcome"},
+    {title: "Wereldkaart", id: "#worldMap"},
     {title: "Geschiedenis", id: "#history"},
     {title: "Karakters", id: "#characters"},
     {title: "Sessies", id: "#sessions"},
+    {title: "Aanmelden", id: "#join"},
   ];
 
   divTabs.selectAll("div")
@@ -47,12 +251,13 @@
     .enter()
     .append("div")
     .text(d => d.title)
-    .style("width", "25%")
+    .style("width", "16%")
     .style("height", "100%")
     .style("background-color", "#f1f1f1")
     .style("border", "1px solid black")
     .style("text-align", "center")
     .style("line-height", "100px")
+    .style("margin", "0 0.8%")
     .on("click", (event, d) => {
       console.log(tabs[d]["id"], "i");
       tabs.forEach((tab, i) => {
@@ -61,6 +266,9 @@
         } else {
           d3.select(tabs[i]["id"]).style("display", "none");
         }
+        if (d === 0) {
+          divTabs.style("display", "none");
+        }
       });
     });
 
@@ -68,7 +276,7 @@
 
 <!--Script for map-->
 <script>
-    const div = d3.select("#my_map")
+    const div = d3.select("#worldMap").style("display", "none");
     var radius = 18,
     h = (Math.sqrt(3) / 2);
     svgWidth = 1000,
@@ -471,6 +679,7 @@
 
 </script>
 
+<!--Script for sessions-->
 <script>
   const divSessions = d3.select("#sessions")
     .style("display", "none");
@@ -559,5 +768,17 @@
   //   .text(d => d.name)
   //   .style("display", "inline-block")
   //   .style("padding-left", "30px")
+
+</script>
+
+
+<!--Script for sessions-->
+<script>
+  const divJoin = d3.select("#join")
+    .style("display", "none");
+
+  divJoin.append("h1").text("Meld je aan!");
+  divJoin.append("p").append("a").attr("href", "https://docs.google.com/forms/d/e/1FAIpQLScoIyMTQJCNSVWhcuTt1D8DWLb8M1giM9TvtER_wf7gu9MV-Q/viewform?usp=sf_link").text("Klik hier om een speler aan te melden!");
+  divJoin.append("p").append("a").text("Klik hier om een karakter aan te melden aan te melden!");
 
 </script>
