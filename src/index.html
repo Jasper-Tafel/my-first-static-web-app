@@ -109,16 +109,16 @@
     .on("click", (event) => {
       console.log("click");
       divWelcome.style("display", "none");
-      d3.select("#characters").style("display", "block");
+      d3.select("#campaign").style("display", "block");
       d3.select("#tabs").style("display", "flex");
     })
     .on("mouseover", (event) => {
       d3.selectAll(".welcomeItem").style("opacity", "0.4");
       d3.select("#welcomeScreen").style("opacity","1");
       divWelcomeBubble
-        .text('De DM')
-        .style('margin-top', '20px')
-        .style('margin-left', '260px')
+        .text('De campagne')
+        .style('margin-top', '10px')
+        .style('margin-left', '200px')
         .style("display","block");
     })
     .on("mouseout", (event) => {
@@ -132,7 +132,7 @@
     .style('margin-left', '420px')
     .on("click", (event) => {
       divWelcome.style("display", "none");
-      d3.select("#characters").style("display", "block");
+      d3.select("#history").style("display", "block");
       d3.select("#tabs").style("display", "flex");
     })
     .on("mouseover", (event) => {
@@ -243,6 +243,7 @@
     {title: "Geschiedenis", id: "#history"},
     {title: "Karakters", id: "#characters"},
     {title: "Sessies", id: "#sessions"},
+    {title: "Campagne", id: "#campaign"},
     {title: "Aanmelden", id: "#join"},
   ];
 
@@ -459,8 +460,8 @@
         location: [[3,17],[4,17]]
       },
       {
-        title: "Dozijnhuizen",
-        description: "Een militair dorp waar de huizen in groepen van twaalf staan.",
+        title: "Fort Awierde",
+        description: "De plek waar verschillende Orc-stammen bij elkaar komen om te overleggen.",
         color: "#663300",
         location: [[11,18]]
       },
@@ -498,13 +499,13 @@
         title: "Tal Abdij",
         description: "Klooster waar riviergodin Tal aanbeden wordt.",
         color: "#443333",
-        location: [[11,7]]
+        location: [[21,6]]
       },
       {
         title: "Koboldenheuvel",
         description: "Hier wonen barbaren. Reis voorzichtig.",
         color: "#443333",
-        location: [[21,6]]
+        location: [[11,7]]
       },
       {
         title: "Alantom Monument",
@@ -570,10 +571,44 @@
 <!--Script for history-->
 <script>
   const divHistory = d3.select("#history")
+    .style("margin", "0 100px")
     .style("display", "none");
 
   divHistory.append("h1").text("Geschiedenis van de wereld");
-  divHistory.append("p").text("Hier komt de geschiedenis van de wereld te staan...");
+  divHistory.append("p").text("Tussen de rivieren de Teg en La-Te ligt de provincie Ferrefelden, onderdeel van het Koninkrijk Yierden. Ferrefelden staat bekend om zijn vruchtbare grond voor wilde magische flora en fauna. Die combinatie maakt dat alleen de meest geharde burgers zich in dit gebied vestigen. Kooplieden moeten zich beveiligen tegen monsters als ze door Ferrefelden trekken, maar de provincie is een bron van veel magische ingrediënten waar goed geld mee te verdienen is. \n");
+  divHistory.append("p").text("Ferrefelden ligt ook aan de voet van het Trollengebergte. Een keten van buitenposten is opgericht om te dreiging uit het noorden in te perken - zoals de naam van het gebergte al doet vermoeden, leven er enkele trollenstammen in de bergen.\n");
+  divHistory.append("p").text("En in het midden van Ferrefelden ligt het dorp Jastablo, een ommuurde veste. Door de ommuringen en torens heeft het wat weg van een kleine stad, maar het heeft slechts een populatie van enkele honderden mensen. Maar die mensen hebben een evenwicht gevonden tegen de barre omstandigheden en gedijen in dit gebied.\n");
+  divHistory.append("p").text("Er was lange tijd een zekere rust. Een balans tussen beschaving en wilde beesten. Tot er een oorlog uitbrak tussen Yierden en de Elven-Eilanden, een week reizen naar het oosten.\n");
+  divHistory.append("p").text("Ridders, magiërs, wapensmeden, huurlingen, edelen en gelukzoekers trokken naar het front in het Oosten. Het liet Jastablo leeg achter. De handel met de steden buiten Ferrefelden staat op een laag pitje. Het is behelpen voor de bewoners. \n");
+  divHistory.append("p").text("De hulp is nodig van een groep bevlogen avonturiers. \n");
+  divHistory.append("p").append("i").text("Noot van de DM: De setting is een klein dorp waar vanuit de groep avonturiers kan vertrekken, omgeven door ongerepte, gevaarlijke natuur. Door gebrek aan sterke autoriteiten hebben de karakters echt de kans om helden te worden. Er is de mogelijkheid om je achtergrond in het verhaal te verwerken, overleg dit met de DM. \n\n\n");
+  divHistory.append("h1").text("Rassen");
+  const divHistoryRas1 = divHistory.append("div").text("De bevolking van Ferrefelden/Jastablo bestaat voornamelijk uit ");
+  divHistoryRas1.append("b").text("mensen ");
+  divHistoryRas1.append("text").text("en ");
+  divHistoryRas1.append("b").text(" halflingen");
+  divHistoryRas1.append("text").text(" in hun vele vormen en gedaanten, van edellieden tot zwervers. Alle andere rassen uit het standaard handbook zijn te vinden in Ferrefelden, maar in minder grote hoeveelheden: \n\n");
+  const divHistoryRas2 = divHistory.append("p").text("De meeste ");
+  divHistoryRas2.append("b").text("Orcs ");
+  divHistoryRas2.append("text").text("en ");
+  divHistoryRas2.append("b").text(" Half-Orcs");
+  divHistoryRas2.append("text").text(" zijn aangesloten bij een clan uit Fort Awierde in het Zuiden. Vroeger trokken clan door Ferrefelden, op rituele jachten naar bijzondere monsters of leverden ze voor geld hun diensten aan om handelskaravanen te beschermen. Sinds de oorlog zijn ze gelokt onder de belofte van grote geldsommen om te vechten in het Oosten. \n");
+  const divHistoryRas3 = divHistory.append('div');
+  divHistoryRas3.append("b").text("Gnomen ");
+  divHistoryRas3.append("text").text("wonen in Belledam in het zuidwesten. Hoewel ze bekend staan om hun nieuwsgierigheid naar nieuwe ontdekkingen en uitvindingen, zie je ze niet vaak in Ferrefelden. Zeker sinds Yierden een oorlog is begonnen, hebben ze zich nog meer teruggetrokken in hun eigen gemeenschap. \n");
+  const divHistoryRas4 = divHistory.append('p');
+  divHistoryRas4.append("b").text("Tieflingen ");
+  divHistoryRas4.append("text").text("zijn sterk gemengd onder de menselijke bevolking. Iedereen in Ferrefelden kent wel een Tiefling. De meeste tieflingen claimen aan verre nazaat van de Ferrefeldse held Alantom te zijn.\n");
+  const divHistoryRas5 = divHistory.append('div');
+  divHistoryRas5.append("b").text("Elven ");
+  divHistoryRas5.append("text").text("komen oorspronkelijk van de Elven-Eilanden in het oosten. Lange tijd hebben ze in harmonie geleefd en kwamen ze veel in Ferrefelden. Echter, sinds de Elven-Eilanden in oorlog zijn met het koninkrijk Yierden, houden ze zich gedeisd. Dommere lieden vergeten het verschil wel eens tussen ‘in oorlog met de Elven-Eilanden’ en ‘in oorlog met de elven’.\n");
+  const divHistoryRas6 = divHistory.append("p").text("De enige bekende ");
+  divHistoryRas6.append("b").text("Dwergen");
+  divHistoryRas6.append("text").text("stad Argentimeen ligt in een van de uitlopers van het Trollengebergte. Individuele zilversmeden of handelaren reizen door Ferrefelden, maar ze blijven op zichzelf. Geruchten gaan dat er een netwerk van dwergensteden onder het Trollengebergte liggen, maar als dit zo is, houden de Dwergen dit geheim.\n");
+  const divHistoryRas7 = divHistory.append("div").text("En er bestaan twee bekende ");
+  divHistoryRas7.append("b").text("Dragonborn");
+  divHistoryRas7.append("text").text("-families. Ze hebben lagere adeltitels, claimen grote lappen jachtgebied en zijn altijd met elkaar in vete.\n\n");
+
 </script>
 
 <!--Script for characters-->
@@ -685,7 +720,7 @@
     .style("display", "none");
 
   divSessions.append("h1").text("Sessies");
-  divSessions.append("p").text("Dit zijn alle characters van de campagne");
+  divSessions.append("p").text("Hier komt een overzicht van alle sessies. Voorbeelden hieronder:");
 
   var sessions = [
     {
@@ -712,62 +747,11 @@
   ]
 
   const largeContainer2 = divSessions.append("div")
-    .style("height", "700px").style("display", "flex").attr("class", "largeContainer").style("gap", "100px");
+    .style("height", "700px").style("display", "block").attr("class", "largeContainer").style("gap", "10px");
 
-  const smallLeftContainer2 = largeContainer2.append("div").style("display", "block").attr("class", "leftContainer");
 
-  const smallRightContainer2 = largeContainer2.append("div").attr("class", "rightContainer")
-    .style("width", "600px")
-    .style("height", characters.length * 100 + "px")
-    .style("background-color", "white")
-    .style("border", "1px solid black")
-    .style("display", "block");
+  sessions.forEach((session) => largeContainer2.append('p').text(session.description))
 
-  // const characterList = smallLeftContainer.selectAll("div")
-  //   .data(characters)
-  //   .enter()
-  //   .append("div")
-  //   .style("width", "400px")
-  //   .style("height", "100px")
-  //   .style("background-color", "white")
-  //   .style("border", "1px solid black")
-  //   // .style("text-align", "center")
-  //   .style("line-height", "100px")
-  //   .on("click", (event, d)=>{
-  //     smallRightContainer.selectAll("p").remove();
-  //     smallRightContainer.selectAll("img").remove();
-  //     smallRightContainer.append("img")
-  //       .attr("src", characters[d].image)
-  //       .style("position", "absolute")
-  //       .style("width", "150px")
-  //       .style("height", "150px")
-  //       .style("top", "240px")
-  //       .style("right", "30px")
-  //       .style("border-radius", "50%");
-  //
-  //     smallRightContainer.append("p").text("Naam: " + characters[d].name)
-  //       .style("padding-left", "30px");
-  //     smallRightContainer.append("p").text("Speler: " + characters[d].player)
-  //       .style("padding-left", "30px");
-  //     smallRightContainer.append("p").text("Class: " + characters[d].class)
-  //       .style("padding-left", "30px");
-  //     smallRightContainer.append("p").text("Level: " + characters[d].level).style("padding-left", "30px");
-  //     smallRightContainer.append("p").text("Background: " + characters[d].background).style("padding-left", "30px");
-  //     smallRightContainer.append("p").text("Race: " + characters[d].race).style("padding-left", "30px");
-  //     smallRightContainer.append("p").text("Beschrijving: " + characters[d].description).style("padding", "0 30px");
-  //   });
-  //
-  // characterList.append("img")
-  //   .attr("src", d => d.image)
-  //   .style("width", "50px")
-  //   .style("height", "50px")
-  //   .style("margin-left", "10px")
-  //   .style("border-radius", "50%");
-  //
-  // characterList.append("p")
-  //   .text(d => d.name)
-  //   .style("display", "inline-block")
-  //   .style("padding-left", "30px")
 
 </script>
 
@@ -779,6 +763,6 @@
 
   divJoin.append("h1").text("Meld je aan!");
   divJoin.append("p").append("a").attr("href", "https://docs.google.com/forms/d/e/1FAIpQLScoIyMTQJCNSVWhcuTt1D8DWLb8M1giM9TvtER_wf7gu9MV-Q/viewform?usp=sf_link").text("Klik hier om een speler aan te melden!");
-  divJoin.append("p").append("a").text("Klik hier om een karakter aan te melden aan te melden!");
+  divJoin.append("p").append("a").attr("href", "https://docs.google.com/forms/d/e/1FAIpQLSeF4gug7VmwuJotn4xrK7DF_D0nRSIEqMysEPNFC6Cf6KuGeQ/viewform?usp=sf_link").text("Klik hier om een karakter aan te melden!");
 
 </script>
