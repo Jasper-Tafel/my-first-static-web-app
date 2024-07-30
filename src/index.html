@@ -327,7 +327,7 @@
           description.text(clickDescription).style("display", "block")
         })
     }
-    function HexGrid({xGrid = 0, yGrid = 0, color = '#ffffff', clickTitle = 'default', clickDescription = 'default'} = {}) {
+    function HexGrid({xGrid = 0, yGrid = 0, color = '#ffffff', clickTitle = 'Heide', clickDescription = 'Heide'} = {}) {
       DrawHex({xDiff:xGrid*radius*1.5, yDiff: yGrid * 2 * radius * h +  (xGrid%2) * radius * h, color: color, clickTitle: clickTitle, clickDescription: clickDescription});
     }
 
