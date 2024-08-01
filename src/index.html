@@ -201,8 +201,8 @@
     .style('margin-left', '460px')
     .on("click", (event) => {
       divWelcome.style("display", "none");
-      d3.select("#map").style("display", "block");
-      d3.select("#sessions").style("display", "flex");
+      d3.select("#join").style("display", "block");
+      d3.select("#tabs").style("display", "flex");
     })
     .on("mouseover", (event) => {
       d3.selectAll(".welcomeItem").style("opacity", "0.4");
@@ -581,7 +581,7 @@
   divHistory.append("p").text("Er was lange tijd een zekere rust. Een balans tussen beschaving en wilde beesten. Tot er een oorlog uitbrak tussen Yierden en de Elven-Eilanden, een week reizen naar het oosten.\n");
   divHistory.append("p").text("Ridders, magiërs, wapensmeden, huurlingen, edelen en gelukzoekers trokken naar het front in het Oosten. Het liet Jastablo leeg achter. De handel met de steden buiten Ferrefelden staat op een laag pitje. Het is behelpen voor de bewoners. \n");
   divHistory.append("p").text("De hulp is nodig van een groep bevlogen avonturiers. \n");
-  divHistory.append("p").append("i").text("Noot van de DM: De setting is een klein dorp waar vanuit de groep avonturiers kan vertrekken, omgeven door ongerepte, gevaarlijke natuur. Door gebrek aan sterke autoriteiten hebben de karakters echt de kans om helden te worden. Er is de mogelijkheid om je achtergrond in het verhaal te verwerken, overleg dit met de DM. \n\n\n");
+  divHistory.append("p").append("i").text("Noot van de DM: De setting is een klein dorp waar vanuit de groep avonturiers kan vertrekken, omgeven door ongerepte, gevaarlijke natuur. Door gebrek aan sterke autoriteiten hebben de karakters echt de kans om helden te worden. Het leukste is om je achtergrond in het verhaal te verwerken, overleg dit met de DM. \n\n\n");
   divHistory.append("h1").text("Rassen");
   const divHistoryRas1 = divHistory.append("div").text("De bevolking van Ferrefelden/Jastablo bestaat voornamelijk uit ");
   divHistoryRas1.append("b").text("mensen ");
