@@ -38,6 +38,9 @@
 <!-- Create a div where the sessions will take place -->
 <div id="sessions"></div>
 
+<!-- Create a div where the campaign will take place -->
+<div id="campaign"></div>
+
 <!-- Create a div where the sessions will take place -->
 <div id="join"></div>
 
@@ -608,7 +611,22 @@
   const divHistoryRas7 = divHistory.append("div").text("En er bestaan twee bekende ");
   divHistoryRas7.append("b").text("Dragonborn");
   divHistoryRas7.append("text").text("-families. Ze hebben lagere adeltitels, claimen grote lappen jachtgebied en zijn altijd met elkaar in vete.\n\n");
+  divHistory.append("p").append("i").text("Noot van de DM: Mocht iemand een ander ras willen spelen, doe dat dan in overleg, dan kan de wereld met dat ras bevolkt worden. \n\n\n");
 
+
+</script>
+
+<!--Script for campaign-->
+<script>
+  const divCampaign = d3.select("#campaign")
+    .style("margin", "0 100px")
+    .style("display", "none");
+
+  divCampaign.append("h1").text("Over de Campagne");
+  divCampaign.append("p").text("Ik ben Jasper, ‘Jaspers tafel’ staat in Amsterdam en op de tafel zijn al vele one-shots gespeeld. In mijn studententijd ben ik met een vaste groep vrienden begonnen met Dungeons&Dragons, eerst een jaar als speler en daarna nog twee jaar als Dungeon Master. Na het einde van die campagne heb ik nog enkele losse one-shots gespeeld, altijd met verschillende groepen en in verschillende settings.\n");
+  divCampaign.append("p").text("D&D is de mogelijkheid om de rol van iemand anders te vervullen. Ik hou van karakterontwikkeling, karakters die elkaar leren kennen en op elkaar ingespeeld raken. Ik hou ook van spelersontwikkeling, spelers die elkaar leren kennen en op elkaar ingespeeld raken. One-shots smaken vaak naar meer.\n");
+  divCampaign.append("p").text("Daarom start ik dit jaar het experiment Ferrefelden. Dit worden drie gelinkte one-shots in dezelfde setting met iets meer mogelijkheid tot karaktergroei. Om te experimenteren met nieuwe spelers. En misschien als een introductie om misschien weer een grotere campagne later dit jaar op te starten.\n");
+  divCampaign.append("p").text("Vragen? Opmerkingen? Feedback? Laat maar komen!");
 </script>
 
 <!--Script for characters-->
@@ -754,7 +772,6 @@
 
 
 </script>
-
 
 <!--Script for sessions-->
 <script>
